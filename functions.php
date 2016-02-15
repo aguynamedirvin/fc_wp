@@ -16,7 +16,8 @@ $sage_includes = [
     'lib/titles.php',       // Page titles
     'lib/wrapper.php',      // Theme wrapper class
     'lib/customizer.php',   // Theme customizer
-    'lib/woocommerce.php'  // WooCommerce
+    'lib/woocommerce.php',  // WooCommerce
+    'lib/slider.php'        // Slider
 ];
 
 foreach ($sage_includes as $file) {

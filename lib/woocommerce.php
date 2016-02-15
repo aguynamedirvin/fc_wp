@@ -1,33 +1,30 @@
 <?php
 
 /**
+ * Add to cart script
+ */
+function add_to_cart_script() {
+    if( is_product() ){
+        wp_enqueue_script( 'wc-add-to-cart-variation' );
+    }
+}
+//add_action( 'wp_head', 'add_to_cart_script' );
+
+/**
  * Add WooCommerce support
  */
 add_theme_support('woocommerce');
 
 
-add_filter('woocommerce_order_button_html', 'order_button_html');
-
-function order_button_html() {
-
-}
-
-
 /**
  * Remove single product meta (SKU, categories and tags)
  */
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-
-/**
- * Remove single product sale tag
- */
-remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
-
-/**
- * Remove single product rating & excerpt
- */
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
+
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
 
 /**
  * Single product show similar products
